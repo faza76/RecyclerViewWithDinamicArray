@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="kendaraan">
+        <item>Mobil</item>
+        <item>pesawat</item>
+        <item>Sepedah</item>
+        <item>Kereta</item>
+    </string-array>
+
+    <string-array name="gambar">
+        <item>@drawable/ic_directions_car_black_24dp</item>
+        <item>@drawable/ic_flight_black_24dp</item>
+        <item>@drawable/ic_directions_bike_black_24dp</item>
+        <item>@drawable/ic_train_black_24dp</item>
+    </string-array>
+
+
+</resources>
