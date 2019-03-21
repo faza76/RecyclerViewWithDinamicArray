@@ -6,6 +6,7 @@ package com.example.recyclerv;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,16 +18,28 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
-    String[] items;
-    TypedArray img;
+    String items;
+    String desc;
+    Drawable img;
+    ArrayList<kendaraan> listkd;
 
-    public Adapter(Context context, String[] items, TypedArray img){
+//    public Adapter(Context context, String[] items, String[] desc, TypedArray img){
+//        this.context = context;
+//        this.items = items;
+//        this.img = img;
+//        this.desc = desc;
+//    }
+
+
+
+    public Adapter(Context context, ArrayList<kendaraan> kd){
         this.context = context;
-        this.items = items;
-        this.img = img;
+        this.listkd = kd;
     }
 
     @NonNull
@@ -40,18 +53,19 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int i) {
-        ((Items)viewHolder).mtext.setText(items[i]);
-        ((Items) viewHolder).mImage.setImageResource(img.getResourceId(i,-1));
+        ((Items)viewHolder).mtext.setText(listkd.get(i).getName());
+        ((Items) viewHolder).mImage.setImageDrawable(listkd.get(i).getImg());
+        ((Items) viewHolder).mdesc.setText(listkd.get(i).getDesc());
 
 
         ((Items) viewHolder).parentlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,items[i],Toast.LENGTH_SHORT);
-                Log.d("TAG", "onClick: Clicked" + items[i]);
+                Toast.makeText(context,listkd.get(i).getName(),Toast.LENGTH_SHORT);
+                Log.d("TAG", "onClick: Clicked" + listkd.get(i).getName());
                 AlertDialog.Builder dialog = new AlertDialog.Builder(context);
                 dialog.setTitle("Testing");
-                dialog.setMessage(items[i]);
+                dialog.setMessage(listkd.get(i).getName());
                 dialog.show();
             }
         });
@@ -70,18 +84,20 @@ public class Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return items.length;
+        return listkd.size();
     }
 
     public class Items extends RecyclerView.ViewHolder{
         ImageView mImage;
         TextView mtext;
+        TextView mdesc;
         LinearLayout parentlayout;
         public Items(@NonNull View itemView) {
             super(itemView);
             parentlayout = itemView.findViewById(R.id.parentlayout);
             mImage = itemView.findViewById(R.id.image);
             mtext = itemView.findViewById(R.id.text1);
+            mdesc = itemView.findViewById(R.id.desc);
         }
     }
 

@@ -5,15 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/Recyview"
+
+
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-        </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/Recyview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </android.support.v7.widget.RecyclerView>
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="65dp"
+                    android:id="@+id/fab"
+
+                    android:layout_marginTop="490dp"
+                    android:layout_height="54dp"
+                    android:layout_gravity="bottom|right"
+                    android:src="@drawable/ic_add_circle_black_24dp"
+
+                    app:layout_constraintRight_toLeftOf="parent"
+                    app:layout_constraintBottom_toTopOf="parent"
+                    app:fabSize="normal" />
+
+            </android.support.design.widget.CoordinatorLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
 </android.support.constraint.ConstraintLayout>
